@@ -1,11 +1,9 @@
 from fastapi import FastAPI
+
 from . import models
-from .database import engine
-from .routes import post, user, auth
 from .config import settings
-
-
-
+from .database import engine
+from .routes import auth, post, user
 
 models.Base.metadata.create_all(bind=engine)
 
@@ -20,10 +18,3 @@ app.include_router(auth.router)
 @app.get("/")
 async def root():
     return {"message" : "Welcome to my API!!"}
-
-
-
-
-
-
-
