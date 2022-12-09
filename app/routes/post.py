@@ -11,6 +11,7 @@ router = APIRouter(
     prefix="/posts",
     tags=['Posts']
 )
+
 @router.get("/", response_model=List[schemas.Post])
 def get_posts(db: Session = Depends(get_db), limit:int = 5, skip: int = 0, search: Optional[str] = ""):
     # cursor.execute("""SELECT * FROM posts""")
